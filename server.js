@@ -15,18 +15,19 @@ var app = express();
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
-app.use(cors({origin: '*'})); //For FCC testing purposes only
-
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({origin: '*'})); 
 
 app.use(helmet({
   frameguard: { action: 'deny'},
   hidePoweredBy: { setTo: 'PHP 3.2.0' },
   dnsPrefetchControl: false 
 }));
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 //Sample front-end
 app.route('/:project/')
